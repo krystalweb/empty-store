@@ -1,4 +1,4 @@
-angular.module('starter.services', [])
+﻿angular.module('starter.services', [])
 //轮播图数据
 .factory("mybannerImg",function(){
 	var bannerImg=[
@@ -139,7 +139,7 @@ angular.module('starter.services', [])
 .factory("myskytea",function(){
 	var skytea=[
 	    {id:83,className:"天尖",skyTea:[
-	        [{id:100,Cdescribe:"一年制安化美韵生黑茶筒装特技天尖400g/健康茶/瘦身茶",Cprice:'￥238.00',Cpic:'../img/66_03.png'},
+	        [{id:100,Cdescribe:"一年制安化美韵生黑茶筒装特技天尖400g/健康茶/瘦身茶",Cprice:'￥238.00',Cpic:'img/66_03.png'},
 	        {id:101,Cdescribe:"两年制湖南安化美韵生黑茶筒装特技天尖400g",Cprice:'￥288.00',Cpic:'../img/66_03-05.png'}],
 	        [{id:102,Cdescribe:"礼盒装特级天尖  安化美韵生煮茶  一年制茶具  健康减肥茶",Cprice:'￥488.00',Cpic:'../img/66_10.png'},
 	        {id:103,Cdescribe:"安化美韵生黑茶  两年制  礼盒装特级天尖  降脂养生茶",Cprice:'￥588.00',Cpic:'../img/66_12.png'}],
