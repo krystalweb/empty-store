@@ -1,0 +1,19 @@
+<ion-view view-title='' hide-nav-bar="true">
+	<style type="text/css">
+		.small-item{padding: 5px 0 5px 20px;}
+		.tealist{margin-bottom: -1px;}
+	</style>
+	<div class="bar bar-header assertive-bg bar_color">
+		<button class="button-clear">
+			<a href="#/tab/classify" style="color: #fff;"><i class="icon ion-ios-arrow-left"></i></a>
+		</button>		
+		  <h1 class="title" style="color: #fff; font-weight: bold;">分类导航</h1>
+		</div>
+	<ion-content class="has-header">
+			<div class="list tealist" ng-repeat="class in classNav[0].blacktea">
+		    	<div class="item small-item" ng-click="detail(class.id)">{{class.className}}</div>
+		    </div>
+
+		
+	</ion-content>
+</ion-view>

@@ -1,0 +1,47 @@
+<ion-view view-title="详情页面" hide-nav-bar="true" hide-tabs="true">
+	<div class="bar bar-header assertive-bg bar_color">
+		<button class="button-clear">
+			<a href="#/tab/classNav/:myId" style="color: #fff;"><i class="icon ion-ios-arrow-left"></i></a>
+		</button>		
+		  <h1 class="title" style="color: #fff; font-weight: bold;">天尖</h1>
+		  <button class="button button-energized"><i class="icon ion-android-add"></i></button>
+	</div>
+	<!--顶部tab开始-->
+  <div class="tabs tabs-top">
+	  <a class="tab-item">
+	    新品
+	  </a>
+	  <a class="tab-item">
+	   价格
+	  </a>
+	  <a class="tab-item">
+	 销量
+	  </a>
+	  <a class="tab-item">
+	    人气
+	  </a>
+	  <a class="tab-item">
+	    <i class="icon ion-ios-download"></i>
+	  </a>
+   </div>
+   <!--顶部tab结束-->
+	<ion-content class="has-header">
+		<div style="height: 1rem;"></div>
+		<!--详情数据开始-->
+	<div class="list goodlist-size">
+	  	<div class="item item-body">
+	  		<div class="row" ng-repeat='items in skytea[0].skyTea'>
+		  		<div class="col col-50" ng-repeat='item in items' ng-click="detailList(item.id)">
+	  				<img class="full-image" src="{{item.Cpic}}">
+				    <p>{{item.Cdescribe}}</p>
+				    <p>
+				      <a href="#" class="subdued">{{item.Cprice}} </a>
+				      <a href="#" class="subdued">购物车</a>
+				    </p>
+		  		</div>
+		  	</div>			  	
+		  </div>
+	</div>	
+	<!--详情数据结束-->
+	</ion-content>
+</ion-view>

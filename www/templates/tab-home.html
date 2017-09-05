@@ -1,0 +1,157 @@
+<ion-view view-title="首页" hide-nav-bar="true">
+	<style type="text/css">
+		.bar_color{font-size: 0.34rem;}
+		.bar_color button{color: #fff;}
+		.box img{width: 7.2rem; height: 2.62rem;}
+		.col-20{text-align: center; font-size: 0.28rem;}
+		.bigImg{ float: left;}
+		.small{ float: right;}
+		.bigImg img{height: 5.2rem; width: 3.1rem;}
+		.small div{height: 2.6rem; width: 3.1rem;}
+		.small img{height: 2.6rem; width: 3.1rem;}
+		/*list之间的间距和item之间的内边距*/
+		.title-padding{padding: 2px 6px;}
+		.goodlist-size{margin-bottom: 0;}
+		.col-20 img{width: 1.3rem; height: 1.3rem;}
+		.home-list{padding: 0;}
+	</style>
+	<!--页头部分-->
+    <div class="bar bar-header assertive-bg bar_color">
+	  <button class="button button-icon icon ion-search"></button>
+	  <h1 class="title" style="color: #fff; font-weight: bold;">天宝商汇</h1>
+	  <button class="button button-icon icon ion-android-phone-portrait"></button>
+	</div>
+    <!--页头结束-->
+  <ion-content ng-controller="homeCtrl" padding="false">
+<!--  	<div style="height: 0.5rem;"></div>-->
+    <!--轮播开始-->
+        <ion-slide-box class='has-header' auto-play="true" does-continue="true" slide-interval=2000 show-pager="true" delegate-handle="slideimgs">
+		  	<ion-slide ng-repeat="bannerPic in bannerData">
+		  		<div class="box"><img src="{{bannerPic.Cpic}}"/></div>
+		  	</ion-slide>
+		</ion-slide-box>
+    <!--轮播结束-->
+	  <!--  列表选项-->
+	  <div class="list goodlist-size">
+	  	<div class="item home-list">
+	  		<div class="row">
+				  <div class="col-20"><img src="img/33_03.png"/><br/>附近门店</div>
+				  <div class="col-20"><img src="img/33_04-05.png"/><br/>金储商店</div>
+				  <div class="col-20"><img src="img/33_07.png"/><br/>公告通知</div>
+				  <div class="col-20"><img src="img/33_06-09.png"/><br/>新闻动态</div>
+				  <div class="col-20"><img src="img/33_07-11.png"/><br/>新品推荐</div>
+				</div>
+	  	</div>
+	  </div>
+	  <div style="height: 1.26rem;"><img style="width: 7.2rem; height: auto;" src="img/33_18.png"/></div>
+	  <!--  列表结束-->
+	  <!--推荐商品开始-->
+	    <div class="list goodlist-size">
+	    	<div class="item titleItm title-padding">
+		  		<h2 style="float: left;">推荐商品</h2>
+		  		<p style="float: right;">更多</p>
+		  	</div>
+	    	<div class="item">
+	    		<div class="col-50 bigImg"><img src="img/33_20.png"/></div>
+	    		<div class="col-50 small">
+	    			<div><img src="img/33_21.png"/></div>
+	    			<div><img src="img/33_22.png"/></div>
+	    		</div>
+	    	</div>
+	    </div>
+	  <!--推荐商品结束-->
+	<!--  新品上市开始-->
+	<div class="list goodlist-size">
+	  	<div class="item titleItm title-padding">
+	  		<p class="more" style="float: left;">
+	  			<span class="icon ion-chevron-right"></span>
+	            <a>新款上市</a>         
+	        </p>
+	  		<p class="more" style="float: right;">
+	          <a>更多 </a>
+	          <span class="icon ion-chevron-right"></span>
+	        </p>
+	  	</div>
+	  	<div class="item item-body">
+	  		<div class="row" ng-repeat="items in newproductData">
+		  		<div class="col col-50" ng-repeat="item in items">
+	  				<img class="full-image" src="{{item.Cpic}}">
+				    <p>{{item.Cname}}</p>
+				    <p>
+				      <a href="#" class="subdued" style="color: red;">{{item.price}}</a>
+				      <a href="#" class="subdued" style="text-decoration: line-through;">{{item.oprice}}</a>
+				    </p>
+		  		</div>
+		  	</div>
+		  </div>
+	</div>	
+	<!--  新品上市结束-->
+	<!--天宝推荐开始-->
+	<div class="list goodlist-size">
+	  	<div class="item titleItm title-padding">
+	  		<p class="more" style="float: left;">
+	  		  <span class="icon ion-chevron-right"></span>
+	          <a>天宝推荐</a>         
+	        </p>
+	  		<p class="more" style="float: right;">
+	          <a>更多 </a>
+	          <span class="icon ion-chevron-right"></span>
+	        </p>
+	  	</div>
+	  	<div class="item item-body">
+	  		<div class="row">
+		  		<div class="col col-50">
+	  				<img class="full-image" src="delorean.jpg">
+				    <p>商品名</p>
+				    <p>
+				      <a href="#" class="subdued">原价 </a>
+				      <a href="#" class="subdued">现价</a>
+				    </p>
+		  		</div>
+		  	</div>		    
+		  </div>
+	</div>	
+	<!--天宝推荐结束-->
+	<!--热门推荐开始-->
+	<div class="list goodlist-size">
+	  	<div class="item titleItm title-padding">
+	  		<p class="more" style="float: left;">
+	  		  <span class="icon ion-chevron-right"></span>
+	          <a>热门推荐</a>         
+	        </p>
+	  		<p class="more" style="float: right;">
+	          <a>更多 </a>
+	          <span class="icon ion-chevron-right"></span>
+	        </p>
+	  	</div>
+	  	<div class="item item-body">
+	  		<div class="row">
+		  		<div class="col col-50">
+	  				<img class="full-image" src="delorean.jpg">
+				    <p>商品名</p>
+				    <p>
+				      <a href="#" class="subdued">原价</a>
+				      <a href="#" class="subdued">现价</a>
+				    </p>
+		  		</div>
+		  	</div>		    
+		  </div>
+	</div>	
+	<!--热门推荐结束-->
+	<!--产品列表开始-->
+	<div class="list">
+	  	<div class="item item-body item-thumbnail-left">
+	  		<div class="row" ng-repeat="listData in footerData">
+		  		<div class="col col-50" ng-repeat="lists in listData">
+		  			<div style="float: left; text-align: center;">
+		  				<h2>{{lists.Cname}}</h2>
+				        <p>{{lists.Cdescrite}}</p>
+		  			</div>  
+				    <img src="{{lists.Cpic}}" style="margin-top: 0.2rem; width: 1.45rem; height: 1.45rem; float: right;">
+		  		</div>
+		  	</div>		    
+		  </div>
+	</div>	
+	<!--产品列表结束-->
+  </ion-content>
+</ion-view>

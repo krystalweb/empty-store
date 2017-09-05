@@ -1,0 +1,26 @@
+<ion-view view-title="商品详情" hide-nav-bar="true" hide-tabs='true'>
+	<style type="text/css">
+		.box{width: 100%; height: auto;}
+		.box img{width: 100%; height: auto;}
+	</style>
+	<div class="bar bar-header assertive-bg bar_color">
+		<button class="button-clear">
+			<a href="#/tab/detail/:myId" style="color: #fff;"><i class="icon ion-ios-arrow-left"></i></a>
+		</button>		
+		  <h1 class="title" style="color: #fff; font-weight: bold;"></h1>
+		  <button class="button button-energized"><i class="icon ion-android-add"></i></button>
+	</div>
+	<ion-content>
+		<!--轮播开始-->
+        <ion-slide-box class='has-header' auto-play="false" does-continue="true" slide-interval=2000 show-pager="false" delegate-handle="slideimgs">
+		  	<ion-slide>
+		  		<div class="box"><img src="../img/66_03-05.png"/></div>
+		  	</ion-slide>
+		  	<ion-slide>
+		  		<div class="box"><img src="../img/66_03-05.png"/></div>
+		  	</ion-slide>
+		</ion-slide-box>
+    <!--轮播结束-->
+    
+	</ion-content>
+</ion-view>

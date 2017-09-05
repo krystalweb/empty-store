@@ -1,0 +1,24 @@
+<ion-view view-title="分类" hide-nav-bar="true">
+	<style type="text/css">
+		.bar_color{font-size: 0.3rem;}
+		.classify-list{margin-bottom: 0;}
+		.small-item{padding: 5px 0 5px 20px;}
+		.tealist{margin-bottom: -1px;}
+	</style>
+	<!--页头部分-->
+    <div class="bar bar-header assertive-bg bar_color">
+		  <h1 class="title" style="color: #fff; font-weight: bold;">分类</h1>
+		</div>
+    <!--页头结束-->
+  <ion-content>
+  	<div style="height: 0.86rem;"></div>  	
+    <div class="list classify-list" ng-repeat="classlist in classData">
+	  <div class="item item-divider">
+	  	<div ng-model="Cname" ng-click="Cname=!Cname">{{classlist.Cname}}</div>		          
+	    <div class="list tealist" ng-show="Cname" ng-repeat="class in classlist.teaData">
+	    	<div class="item small-item" ng-click="classList(class.id)">{{class.classname}}</div>
+	    </div>
+	  </div>		
+	</div>
+  </ion-content>
+</ion-view>

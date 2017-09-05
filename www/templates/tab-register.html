@@ -1,0 +1,26 @@
+<ion-view wiew-title="注册" hide-nav-bar="true" hide-tabs="true">
+	<div class="bar bar-header assertive-bg bar_color">
+		<button class="button-clear">
+			<a href="#/tab/myself" style="color: #fff;"><i class="icon ion-ios-arrow-left"></i></a>
+		</button>
+		  <h1 class="title" style="color: #fff; font-weight: bold;">注册</h1>
+		  <button class="button button-energized">登录</button>
+		</div>
+	<ion-content class="row responsive-sm">
+		<div style="height: 1rem;"></div>
+		<div class="list list-inset" style="opacity: 0.5;">
+				  <label class="item item-input"><input type="text" placeholder="手机号码(必填)" ng-model="infor.name"/></label>
+					<label class="item item-input"><input type="password" placeholder="密码(必填)" ng-model="infor.email"/></label>
+					<label class="item item-input"><input type="password" placeholder="确认密码(必填)" ng-model="infor.phone"/></label>
+					<label class="item item-input"><input type="text" placeholder="导购号(可不填)" ng-model="infor.password"/></label>
+  		</div>
+  		<div>
+  			我已看过并同意<a><天宝来服务使用协议></a>
+  		</div>
+  		<div class="loginButton">
+  			<button class="button button-block button-positive" ng-click="register(infor)">注册 </button> 			
+  		</div>
+		
+	</ion-content>
+	
+</ion-view>
