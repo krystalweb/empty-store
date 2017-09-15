@@ -1,8 +1,29 @@
 <ion-view view-title="商品详情" hide-nav-bar="true" hide-tabs='true'>
 	<style type="text/css">
-		.box{width: 100%; height: auto;}
+		.box{width: 7.2rem; height: 7.2rem;}
 		.box img{width: 100%; height: auto;}
-	</style>
+		
+		.good_product{width: 100%; padding-left: 0.2rem; padding-right: 0.2rem; box-sizing: border-box;}
+		.good_title{width: 7.2rem; height: 0.9rem; margin-top: 0.25rem;}
+		.title_left{width: 80%; float: left;}
+		.title_right{width: 20%; float: right; text-align: center; font-size: 0.24rem;}
+		.title_right i{font-size: 0.5rem;}
+		.title_self{background: red; color: #fff;}
+		.good_mun{width: 7.2rem; height: 0.46rem; font-size: 0.2rem; margin-top: 0.2rem;}
+		.good_price{width: 7.2rem; height: 0.6rem; margin-top: 0.2rem;}
+		.new_price{font-size: 0.36rem; color: #fab898;}
+		.old_price{font-size: 0.2rem; color: #888888; text-decoration: line-through;}
+		.good_search{height: 1rem; border-top: 1px solid #f1f1f5; padding-top: 0.1rem;}
+		.search_left{float: left; font-size: 0.24rem;}
+		.search_right{float: right; font-size: 0.24rem;}
+		.tabs{height: 1.32rem; line-height: 1.32rem;}
+        .tabs button{margin: 0.1rem; font-weight: bold;}
+        .col{border-bottom: 1px solid #f1f1f5;}
+        .adress .col{margin-bottom: 0;}
+        .second .col{margin-bottom: 0; text-align: center;}
+        .second .col-50,.col-40,.col-20{margin-bottom: 0;}
+        .fl{float: left;}
+	</style> 
 	<div class="bar bar-header assertive-bg bar_color">
 		<button class="button-clear">
 			<a href="#/tab/detail/:myId" style="color: #fff;"><i class="icon ion-ios-arrow-left"></i></a>
@@ -10,9 +31,9 @@
 		  <h1 class="title" style="color: #fff; font-weight: bold;"></h1>
 		  <button class="button button-energized"><i class="icon ion-android-add"></i></button>
 	</div>
-	<ion-content>
+	<ion-content class="has-header">
 		<!--轮播开始-->
-        <ion-slide-box class='has-header' auto-play="false" does-continue="true" slide-interval=2000 show-pager="false" delegate-handle="slideimgs">
+        <ion-slide-box auto-play="false" does-continue="true" slide-interval=2000 show-pager="false" delegate-handle="slideimgs">
 		  	<ion-slide>
 		  		<div class="box"><img src="../img/66_03-05.png"/></div>
 		  	</ion-slide>
@@ -21,6 +42,70 @@
 		  	</ion-slide>
 		</ion-slide-box>
     <!--轮播结束-->
-    
+    <!--商品信息开始-->
+       <div class="good_product">
+       	    <div class="good_title">
+       	    	<div class="title_left">{{item.Cdescribe}}<span class="title_self">自营</span></div>
+       	    	<div class="title_right">
+       	    		<i class="icon ion-android-star"></i>
+       	    		<div>收藏</div>
+       	    	</div>
+       	    </div>
+       	    <div class="good_mun">
+       	    	商品编号: <span class="num">000402T0002</span>
+       	    </div>
+       	    <div class="good_price">
+       	    	<span class="new_price">{{item.Cprice}}</span>
+       	    	<span class="old_price">{{item.Cprice}}</span>
+       	    </div>
+       	    <div class="good_search">
+       	    	<div class="search_left">点击查看产品详情</div>
+       	    	<div class="search_right">进入<i class="icon ion-android-add"></i></div>
+       	    </div>
+       </div>
+		<!--产品介绍-->
+		<div style="height: 0.35rem; border-top: 1px dashed #c8c8c8; border-bottom: 1px dashed #c8c8c8;"></div>
+        <div class="row responsive-sm adress">
+		  <div class="col">店铺地址:</div>
+		  <div class="col">
+		  <!--	数量:-->
+		  	<div class="button-group">
+                    <button class="button fl" ng-disabled="item.isDisabled" ng-click="decreaseCount(item)"><i class="icon ion-ios-minus-empty"></i></button>
+                    <input type="text" class="fl" ng-model="item.count">
+                    <button class="button fl" ng-click="addCount(item)"><i class="icon ion-ios-plus-empty"></i></button>
+                  </div>
+		  </div>
+		  <div class="col">
+		  	<div class="row second">
+		  		<div class="col-40">评价晒单</div>
+		  		<div class="col-40">0%好评度</div>
+		  		<div class="col-20"><i class="icon ion-android-add"></i></div>
+		  	</div>
+		  </div>
+		  <div class="col">
+		  	<div class="row second" style="text-align: center;">
+		  		<div class="col-50">联系客服</div>
+		  		<div class="col-50">电话订购</div>
+		  	</div>
+		  </div>
+		  <div class="col">
+		  	<div class="row second" style="text-align: center;">
+		  		<div class="col-50">我也要开店</div>
+		  		<div class="col-50">微信公众号</div>
+		  	</div>
+		  </div>
+		</div>
 	</ion-content>
+    <div class="tabs">
+	    <button class="button button-energized" style="width: 2.04rem;">
+		  分享
+		</button>
+	    <button class="button button-assertive" ng-click="addGoods(item)" style="width: 3.2rem;">
+		  加入购物车
+		</button>
+	    <!--<button class="button button-light" style="width: 0.94rem;">
+		  <img style="width: 35px; height: 35px;" src="img/33_06-09.png"/>
+		</button>-->
+		<button ng-click="shop()" class="button account-btn" style="min-width: 65px;">{{sum}}件</button>
+    </div>
 </ion-view>

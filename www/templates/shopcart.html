@@ -5,12 +5,17 @@
   The Friends service returns an array of friend data
 -->
 <ion-view view-title="购物车" hide-nav-bar="true">
+	<style type="text/css">
+		.fl{float: left;}
+
+	</style>
 	<div class="bar bar-header assertive-bg bar_color">		
 		  <h1 class="title" style="color: #fff; font-weight: bold;">购物车</h1>
-		  <button class="button button-energized">编辑</button>
+		 <button class="button pull-right" ng-if="!toEdit" ng-click="editFunc()">编辑</button>
+     <button class="button pull-right" ng-if="toEdit" ng-click="okFunc()">完成</button>		  
 		</div>
   <ion-content class="has-header">
-    <div class="list card">
+    <!--<div class="list card" ng-hide="goodsChecked.length>0">
 		  <div class="item item-body" style="text-align: center;">
 		    <img class="full-image" src="delorean.jpg">
 		    <p>
@@ -18,6 +23,70 @@
 		    </p>
 		    <a href="#/tab/home" class="button">去逛逛</a>
 		  </div>
-		</div>
+		</div>-->
+		<div class="cart-wrap" ng-if="goodsChecked.length=true">
+        <p class="checkbox-all store-info">
+          <label class="checkbox"><input type="checkbox" ng-checked="selcetAll" ng-click="checkAll()">店铺名:天宝来</label>
+        </p>
+        <div class="cart-list">
+          <div class="promotion-info">
+            <p><span class="tag">加价购</span>
+              <em>购满29.90元，可用优惠价换购商品</em>
+              <a href="" class="fr">去凑单 <i class="icon ion-ios-arrow-forward"></i></a></p>
+          </div>
+          <div class="goods-info" ng-repeat="item in goodsChecked">
+            <div class="checkbox-all checkbox-wrap fl">
+              <label class="checkbox"><input type="checkbox" ng-checked="item.checked" ng-click="toggleChecked(item)"></label>
+            </div>
+            <div class="goods-details fl">
+              <a href="" class="goods-link">
+                <div class="goods-img"><img ng-src="{{item.image}}" alt=""></div>
+                <div class="goods-info-sub">
+                  <div class="name">{{item.name}}</div>
+                  <div class="dimension-info">
+                    规格：{{item.dimension}}
+                    <i class="icon ion-ios-arrow-forward fr"></i>
+                  </div>
+                  <p><em class="price">￥{{item.price}}</em><em class="weight">{{item.weight}}</em></p>
+                  <div class="button-group">
+                    <button class="button fl" ng-disabled="item.isDisabled" ng-click="decreaseCount(item)"><i class="icon ion-ios-minus-empty"></i></button>
+                    <input type="text" class="fl" ng-model="item.count">
+                    <button class="button fl" ng-click="addCount(item)"><i class="icon ion-ios-plus-empty"></i></button>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
   </ion-content>
+  
+  <div class="bar bar-footer footer-div">
+  	1
+      <div class="footer-wrap" ng-if="!toEdit">
+        <div class="checkbox-all">
+          <label class="checkbox"><input type="checkbox" ng-checked="selcetAll" ng-click="checkAll()">全选</label>
+        </div>
+        <div class="account-wrap">
+          <div class="account-label">
+            <h4>总计：<em>￥{{totalValue| number:2}}</em></h4>
+            <p>(不含运费，已优惠￥<em>0.00</em>)</p>
+          </div>
+          <div class="checkout">
+            <button class="button account-btn">去结算<em>({{sum}}件)</em></button></div>
+        </div>
+      </div>
+      <div class="footer-wrap" ng-if="toEdit">
+        <div class="checkbox-all">
+          <label class="checkbox"><input type="checkbox" ng-checked="selcetAll" ng-click="checkAll()">全选</label>
+        </div>
+        <div class="account-wrap">
+          <div class="checkout">
+            <button class="button button-positive ">分享</button>
+            <button class="button button-dark">移至收藏</button>
+            <button class="button button-energized" ng-click="deleteGood()">删除</button>
+          </div>
+        </div>
+      </div>
+    </div>
 </ion-view>

@@ -31,12 +31,12 @@
 	<div class="list goodlist-size">
 	  	<div class="item item-body">
 	  		<div class="row" ng-repeat='items in skytea[0].skyTea'>
-		  		<div class="col col-50" ng-repeat='item in items' ng-click="detailList(item.id)">
-	  				<img class="full-image" src="{{item.Cpic}}">
+		  		<div class="col col-50" ng-repeat='item in items'>
+	  				<img ng-click="detailList(item.id)" class="full-image" src="{{item.Cpic}}">
 				    <p>{{item.Cdescribe}}</p>
 				    <p>
 				      <a href="#" class="subdued">{{item.Cprice}} </a>
-				      <a href="#" class="subdued">购物车</a>
+				      <button class="button button-cart fr button-small" ng-click="addGoods(item.id)"><i class="icon ion-ios-cart-outline"></i></button>
 				    </p>
 		  		</div>
 		  	</div>			  	
