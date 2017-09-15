@@ -141,12 +141,12 @@ angular.module('starter.services', [])
 	    {id:83,className:"天尖",skyTea:[
 	        [{id:100,Cdescribe:"一年制安化美韵生黑茶筒装特技天尖400g/健康茶/瘦身茶",Cprice:'￥238.00',Cpic:'img/66_03.png'},
 	        {id:101,Cdescribe:"两年制湖南安化美韵生黑茶筒装特技天尖400g",Cprice:'￥288.00',Cpic:'img/66_03-05.png'}],
-	        [{id:102,Cdescribe:"礼盒装特级天尖  安化美韵生煮茶  一年制茶具  健康减肥茶",Cprice:'￥488.00',Cpic:'../img/66_10.png'},
-	        {id:103,Cdescribe:"安化美韵生黑茶  两年制  礼盒装特级天尖  降脂养生茶",Cprice:'￥588.00',Cpic:'../img/66_12.png'}],
-	        [{id:104,Cdescribe:"三年制  礼盒装特级天尖  安化美韵生黑茶  越醇越香",Cprice:'￥690.00',Cpic:'../img/77_03.png'},
-	        {id:105,Cdescribe:"安化美韵生黑茶  一年制  盒装特级天尖100g 养胃护肝",Cprice:'￥60.00',Cpic:'../img/77_05.png'}],
-	        [{id:106,Cdescribe:"两年制  安化美韵生黑茶  盒装特级天尖100g 活血美容茶",Cprice:'￥75.00',Cpic:'../img/77_09.png'},
-	        {id:107,Cdescribe:"两年制  安化美韵生黑茶  盒装特级天尖100g 排毒养颜",Cprice:'￥90.00',Cpic:'../img/77_10.png'}]
+	        [{id:102,Cdescribe:"礼盒装特级天尖  安化美韵生煮茶  一年制茶具  健康减肥茶",Cprice:'￥488.00',Cpic:'img/66_10.png'},
+	        {id:103,Cdescribe:"安化美韵生黑茶  两年制  礼盒装特级天尖  降脂养生茶",Cprice:'￥588.00',Cpic:'img/66_12.png'}],
+	        [{id:104,Cdescribe:"三年制  礼盒装特级天尖  安化美韵生黑茶  越醇越香",Cprice:'￥690.00',Cpic:'img/77_03.png'},
+	        {id:105,Cdescribe:"安化美韵生黑茶  一年制  盒装特级天尖100g 养胃护肝",Cprice:'￥60.00',Cpic:'img/77_05.png'}],
+	        [{id:106,Cdescribe:"两年制  安化美韵生黑茶  盒装特级天尖100g 活血美容茶",Cprice:'￥75.00',Cpic:'img/77_09.png'},
+	        {id:107,Cdescribe:"两年制  安化美韵生黑茶  盒装特级天尖100g 排毒养颜",Cprice:'￥90.00',Cpic:'img/77_10.png'}]
 	    ]}
 	
 	
