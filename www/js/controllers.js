@@ -1,6 +1,13 @@
 angular.module('starter.controllers', [])
 
-.controller('homeCtrl', function($scope,myfooter,myrecommend,mybannerImg,$ionicSlideBoxDelegate,mynewproduct) {
+.controller('homeCtrl', function($scope,myfooter,myrecommend,mybannerImg,$ionicSlideBoxDelegate,mynewproduct,locals) {
+	//是否加载引导动画
+		if(!(locals.get("isload")=="已加载")){
+			
+			window.location="#/tab/guide";
+			
+		}
+		
 	//轮播数据获取
 	    $scope.bannerData=mybannerImg.all();
 	    console.log(mybannerImg.all());
@@ -32,34 +39,10 @@ $scope.classData=myclassify.all();
   }
 })
 //购物车页面
-.controller('shopcartCtrl', function($scope,Data,$rootScope) {
-	$rootScope.goodsChecked=[];
-	$scope.goodsData = Data.all(); //商品列表，获取Data中的数据
-//    $scope.goodsChecked = Data.goodsChecked; //被添加到购物车的商品    
-console.log(Data.all());
-    $scope.addGoods = function (item) { //添加商品到购物车
-      var index = $scope.goodsChecked.indexOf(item);
-
-      if (index != -1) {  //检查商品是否已经添加到购物车中
-        item.count = ++$scope.goodsChecked[index].count;
-        item.isDisabled = false;
-      }
-      else {
-        item.count = 0;
-        item.count++; //加入购物车后，购物车中该商品数量默认为1
-        item.isDisabled = true;
-        if ($scope.toEdit == false) {
-          item.checked = true;
-          $scope.selcetAll = true;
-        }
-        else {
-          item.checked = false;
-          $scope.selcetAll = false;
-        }
-        $scope.goodsChecked.push(item);
-      }
-      $scope.account();
-    }
+.controller('shopcartCtrl', function($scope,locals) {
+	$scope.goodsData=JSON.parse(locals.get("datas"));
+	console.log($scope.goodsData);
+	$scope.goodsChecked=$scope.goodsData; //商品列表，获取Data中的数据
 
     $scope.addCount = function (item) {  //增加单个商品数量
       item.singleTotal = 0; //每次计算需将单个商品的数值重置为零
@@ -69,6 +52,10 @@ console.log(Data.all());
         item.isDisabled = false;
       }
       $scope.account();
+      var list=JSON.stringify($scope.goodsChecked);
+		locals.set("datas",list);
+		console.log(locals.get("datas"));
+      
     }
 
     $scope.decreaseCount = function (item) { //减少单个商品数量
@@ -79,6 +66,8 @@ console.log(Data.all());
         item.isDisabled = true;
       }
       $scope.account();
+      var list=JSON.stringify($scope.goodsChecked);
+		locals.set("datas",list);
     }
 
     $scope.toggleChecked = function (item) {
@@ -154,16 +143,16 @@ console.log(Data.all());
       $scope.sum = 0;
       $scope.totalValue = 0;
       for (var i = 0; i < $scope.goodsChecked.length; i++) {
+      
         $scope.goodsChecked[i].singleTotal = 0;
-        if ($scope.goodsChecked[i].checked) {
-          $scope.goodsChecked[i].singleTotal = $scope.goodsChecked[i].price * $scope.goodsChecked[i].count; //单个商品的总价格
+        	
+          $scope.goodsChecked[i].singleTotal = $scope.goodsChecked[i].Cprice * $scope.goodsChecked[i].count; //单个商品的总价格
           $scope.sum += $scope.goodsChecked[i].count; //计算总数量
-        } else if ($scope.goodsChecked[i].checked == false) {
-          $scope.goodsChecked[i].singleTotal = 0;
-        }
+        
         $scope.totalValue += $scope.goodsChecked[i].singleTotal; //计算总价
       }
     }
+      $scope.account();
 })
 
 .controller('myselfCtrl', function($scope) {
@@ -186,9 +175,8 @@ $scope.detail=function(id){
 })
 
 //详情页面
-.controller("detailCtrl",function($scope,myskytea,Data,$stateParams,$rootScope){
+.controller("detailCtrl",function($scope,myskytea,Data,$stateParams,locals){
 	$scope.skytea=myskytea.all();
-//	console.log(myskytea.all()[0].skyTea)
 	$scope.goodsChecked=[];
 	$scope.goodsData = Data.all();
 	$scope.addGoods=function(Id){
@@ -218,28 +206,10 @@ $scope.detail=function(id){
 			
 			
 		}
-		$scope.account();
-		var lisobj=JSON.stringify($scope.goodsChecked);
-	setLocalStorage("datas",lisobj);
-		console.log($scope.goodsChecked);
-	}
-	
-	$scope.account = function () { //计算总价
-      $rootScope.sum = 0;
-      $scope.totalValue = 0;
-      for (var i = 0; i < $scope.goodsChecked.length; i++) {
-        $scope.goodsChecked[i].singleTotal = 0;
-        if ($scope.goodsChecked[i].checked) {
-          $scope.goodsChecked[i].singleTotal = $scope.goodsChecked[i].price * $scope.goodsChecked[i].count; //单个商品的总价格
-          $rootScope.sum += $scope.goodsChecked[i].count; //计算总数量
-        } else if ($scope.goodsChecked[i].checked == false) {
-          $scope.goodsChecked[i].singleTotal = 0;
-        }
-        $scope.totalValue += $scope.goodsChecked[i].singleTotal; //计算总价
-      }
-    }
-	
-
+		var list=JSON.stringify($scope.goodsChecked);
+		locals.set("datas",list);
+		console.log(locals.get("datas"));
+	}		
 	$scope.detailList=function(id){
 
   	window.location="#/tab/detailList/"+id;
@@ -247,7 +217,7 @@ $scope.detail=function(id){
 })
 
 //详情列表页面
-.controller("detailListCtrl",function($scope,Data,$stateParams){
+.controller("detailListCtrl",function($scope,Data,$stateParams,locals){
 	//页面刷新开始
 //	$scope.$on('$ionicView.beforeEnter', function() {//视图进入
 //	
@@ -264,22 +234,17 @@ $scope.detail=function(id){
 //                        //这里只需要将需要的字段重新赋值就OK了
 //      });
     //商品列表，获取Data中的数据  
-	var goods=getLocalStorage("datas");
-	console.log(goods);
-	$scope.goodsChecked=JSON.stringify(goods);
-	$scope.goodsData = Data.all(); 
+	
+	$scope.goodsData =JSON.parse(locals.get("datas")); 
+	$scope.goodsChecked=$scope.goodsData;
 //$scope.goodsChecked = Data.goodsChecked; //被添加到购物车的商品 
 //获取跳转页面ID
-console.log($stateParams.myId)
-for(var i=0;i<Data.all().length;i++){
+for(var i=0;i<$scope.goodsData.length;i++){
+	
 	if($stateParams.myId==$scope.goodsData[i].id){
-//		$scope.Cdescribe=$scope.goodsData[i].Cdescribe;
-//	    $scope.Cprice=$scope.goodsData[i].Cprice;
 	    $scope.item=$scope.goodsData[i];
-	    console.log($scope.goodsData[i]);
-	    $scope.addGoods = function (item) { //添加商品到购物车
+	    $scope.addGoods = function (item) {//添加商品到购物车
       var index = $scope.goodsChecked.indexOf(item);
-
       if (index != -1) {  //检查商品是否已经添加到购物车中
         item.count = ++$scope.goodsChecked[index].count;
         item.isDisabled = false;
@@ -296,9 +261,11 @@ for(var i=0;i<Data.all().length;i++){
           item.checked = false;
           $scope.selcetAll = false;
         }
-        $scope.goodsChecked.push($scope.goodsData[i]);
+        $scope.goodsChecked.push(item);
       }
-      $scope.account();
+      $scope.addcount();
+      var list=JSON.stringify($scope.goodsChecked);
+		locals.set("datas",list);		 
     }
 
     $scope.addCount = function (item) {  //增加单个商品数量
@@ -308,7 +275,9 @@ for(var i=0;i<Data.all().length;i++){
       if (item.count > 1) {
         item.isDisabled = false;
       }
-      $scope.account();
+      $scope.addcount();
+       var list=JSON.stringify($scope.goodsChecked);
+		locals.set("datas",list);
     }
 
     $scope.decreaseCount = function (item) { //减少单个商品数量
@@ -318,103 +287,27 @@ for(var i=0;i<Data.all().length;i++){
       if (item.count == 1) {
         item.isDisabled = true;
       }
-      $scope.account();
+      $scope.addcount();
+       var list=JSON.stringify($scope.goodsChecked);
+		locals.set("datas",list);
     }
 	}
-	var lisobj=JSON.stringify($scope.goodsChecked);
-	setLocalStorage("datas",lisobj);
+	 
+}
+$scope.addcount=function(){
+	$scope.sum=0;
+	for (var i = 0; i < $scope.goodsChecked.length; i++) {
+		$scope.sum += $scope.goodsChecked[i].count;
+	}
 	
 }
-
-//  $scope.addGoods=function(Id){
-//		for(var i=0;i<Data.all().length;i++){
-//			
-//				if($scope.goodsData[i].id==Id){
-//					var index = $scope.goodsChecked.indexOf($scope.goodsData[i]);
-//					if (index != -1) {  //检查商品是否已经添加到购物车中
-//				        $scope.goodsData[i].count = ++$scope.goodsChecked[index].count;
-//				        $scope.goodsData[i].isDisabled = false;
-//				      }
-//				      else {
-//				        $scope.goodsData[i].count = 0;
-//				        $scope.goodsData[i].count++; //加入购物车后，购物车中该商品数量默认为1
-//				        $scope.goodsData[i].isDisabled = true;
-//				        if ($scope.toEdit == false) {
-//				          $scope.goodsData[i].checked = true;
-//				          $scope.selcetAll = true;
-//				        }
-//				        else {
-//				          $scope.goodsData[i].checked = false;
-//				          $scope.selcetAll = false;
-//				        }
-//				        $scope.goodsChecked.push($scope.goodsData[i]);
-//				      }					
-//				}
-//			
-//			
-//		}
-//		$scope.account();
-//		var lisobj=JSON.stringify($scope.goodsChecked);
-//	setLocalStorage("datas",lisobj);
-//		console.log($scope.goodsChecked);
-//	}
-//
-//  $scope.addCount = function (Id) { 
-//  	//增加单个商品数量
-//  	for(var i=0;i<Data.all().length;i++){			
-//				if($scope.goodsData[i].id==Id){
-//					$scope.goodsData[i].singleTotal=0;
-//					$scope.goodsData[i].count++;
-//					if ($scope.goodsData[i].count > 1) {
-//				      $scope.goodsData[i].isDisabled = false;
-//				    }
-//				}
-//		}
-//
-//    $scope.account();
-//    var lisobj=JSON.stringify($scope.goodsChecked);
-//	setLocalStorage("datas",lisobj);
-//  }
-//
-//  $scope.decreaseCount = function (Id) {
-//  	//减少单个商品数量
-//  	for(var i=0;i<Data.all().length;i++){			
-//				if($scope.goodsData[i].id==Id){
-//					$scope.goodsData[i].singleTotal=0;
-//					$scope.goodsData[i].count--;
-//					if ($scope.goodsData[i].count = 1) {
-//				      $scope.goodsData[i].isDisabled = true;
-//				    }
-//				}
-//		}
-//
-//    $scope.account();
-//  }
-
-
-    
-
-    $scope.account = function () { //计算总价
-      $rootScope.sum;
-      $scope.totalValue = 0;
-      for (var i = 0; i < $scope.goodsChecked.length; i++) {
-        $scope.goodsChecked[i].singleTotal = 0;
-        if ($scope.goodsChecked[i].checked) {
-          $scope.goodsChecked[i].singleTotal = $scope.goodsChecked[i].price * $scope.goodsChecked[i].count; //单个商品的总价格
-          $rootScope.sum += $scope.goodsChecked[i].count; //计算总数量
-        } else if ($scope.goodsChecked[i].checked == false) {
-          $scope.goodsChecked[i].singleTotal = 0;
-        }
-        $scope.totalValue += $scope.goodsChecked[i].singleTotal; //计算总价
-      }
-    }
-	
-	
-	$scope.shop=function(){
-		console.log(1);
-		window.location="#/tab/shopcart";
 		
+	$scope.shop=function(){
+		window.location="#/tab/shopcart";
+		var list=JSON.stringify($scope.goodsChecked);
+		locals.set("datas",list);
 	}
+	$scope.addcount();
 })
 
 //登陆页面
@@ -427,6 +320,15 @@ for(var i=0;i<Data.all().length;i++){
 .controller('registerCtrl', function($scope) {
  
  
+})
+//引导动画
+.controller("guideCtrl",function($scope,locals){
+
+	$scope.toIndex=function(){
+		locals.set("isload","已加载");
+		window.location="#/tab/home";
+	}
+
 })
 
 // 底部tabs隐藏显示的指令

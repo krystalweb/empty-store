@@ -202,6 +202,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'],f
         }
       }
     })
+    //引导动画
+ .state("tab.guide",{
+  	url:"/guide",
+  	views:{
+  		"tab-home":{
+  			templateUrl:"templates/tab-guide.html",
+  			controller:"guideCtrl"
+  		}
+  	}
+  
+  })
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/home');
 

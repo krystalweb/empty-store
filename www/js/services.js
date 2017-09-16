@@ -180,14 +180,43 @@ angular.module('starter.services', [])
 
 //购物车数据
 .factory("Data",function(){
-	var goodsData= [{id:100,Cdescribe:"一年制安化美韵生黑茶筒装特技天尖400g/健康茶/瘦身茶",Cprice:'￥238.00',Cpic:'img/66_03.png'},
-	        {id:101,Cdescribe:"两年制湖南安化美韵生黑茶筒装特技天尖400g",Cprice:'￥288.00',Cpic:'img/66_03-05.png'}]
+	var goodsData= [{id:100,Cdescribe:"一年制安化美韵生黑茶筒装特技天尖400g/健康茶/瘦身茶",Cprice:'238.00',Cpic:'img/66_03.png'},
+	        {id:101,Cdescribe:"两年制湖南安化美韵生黑茶筒装特技天尖400g",Cprice:'288.00',Cpic:'img/66_03-05.png'}]
 	return {
 		all:function(){
 			return goodsData;
 		}
 		
 	}
+})
+
+//页面的数据存储
+.factory("locals",function($window){
+		return {
+			set:function(key,value){
+						$window.localStorage[key]=value;
+						
+			},
+			get:function(key,defaultValue){
+					return $window.localStorage[key] || defaultValue;
+			}
+			
+			
+		}
+})
+//全局数据共享
+.factory("shareData",function($window){
+	var allData={};
+	return {
+		set:function(key,value){
+			allData[key]=value;
+		},
+		get:function(key,defaultValue){
+			return  allData[key] || defaultValue;
+		}
+		
+	}
+	
 })
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array

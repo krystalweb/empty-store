@@ -1,0 +1,21 @@
+<ion-view hide-tabs="true" hide-nav-bar='true'>
+	<style>
+    .slider,.slider-slides .lunbobox{width:100%;
+      height:100%;
+    }
+    .lunbobox button{width: 5rem; height: 0.77rem;}
+    .lunbobox button img{width: 5rem; height: 0.77rem;}
+  </style>
+
+  <ion-slide-box auto-play="false" does-continue="false" show-pager="false">
+    <ion-slide>
+      <div class="lunbobox" style="background:url(img/startup_bg_3_2.png) no-repeat; background-size:100% 100%; ">
+        <div style="height:8rem;"></div>
+        <div class="row">
+          <div class="col" style="text-align:center;"><button class="button button-light" ng-click="toIndex()">立即进入</button></div>
+        </div>
+      </div>
+    </ion-slide>
+  </ion-slide-box>
+
+</ion-view>

@@ -7,6 +7,294 @@
 <ion-view view-title="购物车" hide-nav-bar="true">
 	<style type="text/css">
 		.fl{float: left;}
+		.checkbox-all .checkbox {
+    text-align: center;
+    font-size: 12px;
+}
+
+.checkbox-all .checkbox input {
+    margin-left: 5px;
+    width: 16px;
+    height: 16px;
+}
+/*购物车*/
+.cart-wrap {
+    position: relative;
+    background-color: #fff;
+    margin-bottom: 1rem;
+}
+
+.cart-wrap .store-info {
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-wrap .store-info .checkbox {
+    line-height: 2.5;
+    font-size: 0.2rem;
+}
+
+.cart-wrap .store-info .checkbox input {
+    position: relative;
+    top: 3px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.cart-list {
+    width: 100%;
+}
+
+.cart-list .promotion-info {
+    position: relative;
+    padding-left: 10px;
+}
+
+.cart-list .promotion-info::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    left: 43px;
+    pointer-events: none;
+    background-color: #ddd;
+    height: 1px;
+    right: 0;
+    top: 28px;
+    bottom: 0;
+}
+
+.cart-list .promotion-info p {
+    padding-right: 10px;
+}
+
+.cart-list .goods-info {
+    position: relative;
+    display: flex;
+    padding: 0.1rem 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-list .goods-info::after {
+    content: "\20";
+    display: block;
+    position: absolute;
+    left: 19px;
+    top: -5px;
+    width: 0;
+    height: 48%;
+    border-left: 1px dotted #aaa;
+}
+
+.cart-list .goods-info .checkbox-wrap {
+    position: relative;
+    width: 10%;
+}
+
+.cart-list .goods-info .checkbox-wrap .checkbox {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.goods-link {
+    display: flex;
+    text-decoration: none;
+    cursor: default;
+}
+
+.goods-link .goods-img {
+    flex: 1;
+    text-align: center;
+}
+
+.goods-link .goods-img img {
+    width: 80%;
+}
+
+.goods-info-sub {
+    flex: 4;
+    margin-right: 10px;
+}
+
+.goods-info-sub .name {
+    display: -webkit-box;
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 12px;
+    height: 36px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.goods-info-sub .dimension-info {
+    border: 1px solid #ddd;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 5px;
+    font-size: 12px;
+    color: #333;
+}
+
+.goods-info-sub p {
+    line-height: 2.5;
+    margin-bottom: 0;
+}
+
+.goods-info-sub .price {
+    color: #e4393c;
+    font-size: 14px;
+}
+
+.goods-info-sub .button-group {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    overflow: hidden;
+    width: 102px;
+}
+
+.goods-info-sub .button-group button {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
+    line-height: 30px;
+    padding: 0 5px;
+    border: none;
+    border-radius: 0px;
+}
+
+.goods-info-sub .button-group button i {
+    position: relative;
+    top: -5px;
+}
+
+.goods-info-sub .button-group input {
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+}
+
+/*shouw-more*/
+.list-wrap {    
+    margin-bottom: 46px;
+    width: 100%;
+    background-color: #f4f4f4;
+    overflow: hidden;
+}
+
+.shouw-more {
+    position: relative;
+    margin: 0;
+    font-size: 0.2rem;
+    text-align: center;
+    line-height: 3;
+}
+
+.shouw-more::before {
+    position: absolute;
+    content: "";
+    border-top: 1px solid #ddd;
+    width: 38%;
+    top: 1.5rem;
+    left: 0;
+}
+
+.shouw-more::after {
+    position: absolute;
+    content: "";
+    border-top: 1px solid #ddd;
+    width: 38%;
+    top: 1.5rem;
+    right: 0;
+}
+
+.item-detail {
+    margin: 0.5%;
+    width: 49%;
+    float: left;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.item-detail .list-img {
+    width: 100%;
+}
+
+.item-detail .list-info {
+    height: 3em;
+    margin-bottom: 0.2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: initial;
+}
+
+.item-detail .list-info a {
+    color: #333;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.item-detail .price {
+    line-height: 2;
+    color: #ff0000;
+    font-size: 12px;
+}
+
+.item-detail .price em {
+    font-size: 14px;
+}
+
+.footer-div {
+    padding: 0px;
+}
+
+.footer-div .checkbox-all {
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+.footer-wrap {
+    position: relative;
+    width: 100%;
+}
+
+.account-wrap {
+    position: absolute;
+    right: 0px;
+    top: 0;
+}
+
+.account-wrap .account-label {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+    text-align: right;
+}
+
+.account-wrap .account-label h4 {
+    margin: 0px;
+    font-size: 0.14rem;
+    font-weight: bold;
+}
+
+.account-wrap .account-label h4 em {
+    color: #ff0000;
+}
+
+.account-wrap .account-label p {
+    color: #999;
+    font-size: 12px;
+}
+
+.account-wrap .checkout {
+    float: left;
+}
 
 	</style>
 	<div class="bar bar-header assertive-bg bar_color">		
@@ -15,7 +303,7 @@
      <button class="button pull-right" ng-if="toEdit" ng-click="okFunc()">完成</button>		  
 		</div>
   <ion-content class="has-header">
-    <!--<div class="list card" ng-hide="goodsChecked.length>0">
+    <div class="list card" ng-hide="goodsChecked.length>0">
 		  <div class="item item-body" style="text-align: center;">
 		    <img class="full-image" src="delorean.jpg">
 		    <p>
@@ -23,31 +311,27 @@
 		    </p>
 		    <a href="#/tab/home" class="button">去逛逛</a>
 		  </div>
-		</div>-->
-		<div class="cart-wrap" ng-if="goodsChecked.length=true">
+		</div>
+		
+		<div class="cart-wrap" ng-if="goodsChecked.length">
+			
         <p class="checkbox-all store-info">
           <label class="checkbox"><input type="checkbox" ng-checked="selcetAll" ng-click="checkAll()">店铺名:天宝来</label>
         </p>
         <div class="cart-list">
-          <div class="promotion-info">
-            <p><span class="tag">加价购</span>
-              <em>购满29.90元，可用优惠价换购商品</em>
-              <a href="" class="fr">去凑单 <i class="icon ion-ios-arrow-forward"></i></a></p>
-          </div>
-          <div class="goods-info" ng-repeat="item in goodsChecked">
+          <div class="goods-info" ng-repeat="item in goodsData">
             <div class="checkbox-all checkbox-wrap fl">
               <label class="checkbox"><input type="checkbox" ng-checked="item.checked" ng-click="toggleChecked(item)"></label>
             </div>
             <div class="goods-details fl">
               <a href="" class="goods-link">
-                <div class="goods-img"><img ng-src="{{item.image}}" alt=""></div>
+                <div class="goods-img"><img ng-src="{{item.Cpic}}" alt=""></div>
                 <div class="goods-info-sub">
-                  <div class="name">{{item.name}}</div>
-                  <div class="dimension-info">
-                    规格：{{item.dimension}}
-                    <i class="icon ion-ios-arrow-forward fr"></i>
+                  <div class="name">
+                  	{{item.Cdescribe}}
+                  	<i class="icon ion-ios-arrow-forward fr"></i>
                   </div>
-                  <p><em class="price">￥{{item.price}}</em><em class="weight">{{item.weight}}</em></p>
+                  <p><em class="price">￥{{item.Cprice}}</em><em class="weight">{{item.weight}}</em></p>
                   <div class="button-group">
                     <button class="button fl" ng-disabled="item.isDisabled" ng-click="decreaseCount(item)"><i class="icon ion-ios-minus-empty"></i></button>
                     <input type="text" class="fl" ng-model="item.count">
@@ -61,8 +345,7 @@
       </div>
   </ion-content>
   
-  <div class="bar bar-footer footer-div">
-  	1
+  <div class="bar bar-subfooter footer-div">
       <div class="footer-wrap" ng-if="!toEdit">
         <div class="checkbox-all">
           <label class="checkbox"><input type="checkbox" ng-checked="selcetAll" ng-click="checkAll()">全选</label>
@@ -73,7 +356,7 @@
             <p>(不含运费，已优惠￥<em>0.00</em>)</p>
           </div>
           <div class="checkout">
-            <button class="button account-btn">去结算<em>({{sum}}件)</em></button></div>
+            <button class="button account-btn positive-bg" style="color: #fff;">去结算<em>({{sum}}件)</em></button></div>
         </div>
       </div>
       <div class="footer-wrap" ng-if="toEdit">
