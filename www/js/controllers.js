@@ -219,14 +219,14 @@ $scope.detail=function(id){
 //详情列表页面
 .controller("detailListCtrl",function($scope,Data,$stateParams,locals){
 	//页面刷新开始
-//	$scope.$on('$ionicView.beforeEnter', function() {//视图进入
-//	
-//
-//         if (location.href.indexOf("?xyz=")<0){
-//		    	window.location.reload();//页面刷新一次
-//			 location.href=location.href+"?xyz="+Math.random();
-//			 }
-//    });
+	$scope.$on('$ionicView.beforeEnter', function() {//视图进入
+	
+
+           if (location.href.indexOf("?xyz=")<0){
+		    	window.location.reload();//页面刷新一次
+			 location.href=location.href+"?xyz="+Math.random();
+			 }
+      });
 
 //局部刷新
 // $scope.$on('$ionicView.beforeEnter', function() {
@@ -323,7 +323,16 @@ $scope.addcount=function(){
 })
 //引导动画
 .controller("guideCtrl",function($scope,locals){
+//页面刷新开始
+	$scope.$on('$ionicView.beforeEnter', function() {//视图进入
+	
 
+           if (location.href.indexOf("?xyz=")<0){
+		    	window.location.reload();//页面刷新一次
+			 location.href=location.href+"?xyz="+Math.random();
+			 }
+      });
+      
 	$scope.toIndex=function(){
 		locals.set("isload","已加载");
 		window.location="#/tab/home";
