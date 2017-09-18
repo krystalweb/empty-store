@@ -99,16 +99,16 @@
 	        </p>
 	  	</div>
 	  	<div class="item item-body">
-	  		<div class="row">
-		  		<div class="col col-50">
-	  				<img class="full-image" src="delorean.jpg">
-				    <p>商品名</p>
+	  		<div class="row" ng-repeat="items in newproductData">
+		  		<div class="col col-50" ng-repeat="item in items">
+	  				<img class="full-image" src="{{item.Cpic}}">
+				    <p>{{item.Cname}}</p>
 				    <p>
-				      <a href="#" class="subdued">原价 </a>
-				      <a href="#" class="subdued">现价</a>
+				      <a href="#" class="subdued" style="color: red;">{{item.price}}</a>
+				      <a href="#" class="subdued" style="text-decoration: line-through;">{{item.oprice}}</a>
 				    </p>
 		  		</div>
-		  	</div>		    
+		  	</div>	    
 		  </div>
 	</div>	
 	<!--天宝推荐结束-->
@@ -125,16 +125,16 @@
 	        </p>
 	  	</div>
 	  	<div class="item item-body">
-	  		<div class="row">
-		  		<div class="col col-50">
-	  				<img class="full-image" src="delorean.jpg">
-				    <p>商品名</p>
+	  		<div class="row" ng-repeat="items in newproductData">
+		  		<div class="col col-50" ng-repeat="item in items">
+	  				<img class="full-image" src="{{item.Cpic}}">
+				    <p>{{item.Cname}}</p>
 				    <p>
-				      <a href="#" class="subdued">原价</a>
-				      <a href="#" class="subdued">现价</a>
+				      <a href="#" class="subdued" style="color: red;">{{item.price}}</a>
+				      <a href="#" class="subdued" style="text-decoration: line-through;">{{item.oprice}}</a>
 				    </p>
 		  		</div>
-		  	</div>		    
+		  	</div>	    
 		  </div>
 	</div>	
 	<!--热门推荐结束-->
